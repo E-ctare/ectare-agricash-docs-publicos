@@ -32,7 +32,7 @@ Realizar requisição POST de acordo com o CURL disponibilizado abaixo:
 
 ~~~curl
 curl --request POST \
-  --url https://{{AMBIENTE}}/oauth/token \
+  --url {{AMBIENTE}}/ectare-gerenciador-autenticacao/oauth/token \
   --header 'content-type: application/json' \
   --data '{
   "client_id": "{{SEU_CLIENT_ID}}",
@@ -248,7 +248,7 @@ A requisição deve ser do tipo POST, configurando o cabeçalho de Autenticaçã
 Exemplo com CURL:
 ~~~curl
 curl --request POST \
-  --url https://api.dev.agricash.ectare.com.br/v2/devedores \
+  --url {{AMBIENTE}}/devedores/integracoes/importacao \
   --header 'authorization: eyJhbGciOiJIUzI1N...' \
   --header 'content-type: application/json' \
   --data '{}'
