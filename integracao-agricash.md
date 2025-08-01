@@ -86,10 +86,10 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                 "possuiCertificadoDigital": boolean : obrigatorio | Determina o tipo da assinatura
                 "endereco": object : obrigatorio | {
                     "logradouro": string : obrigatorio
-                    "numero": string : obrigatorio
-                    "complemento": string : obrigatorio
+                    "numero": string : opcional
+                    "complemento": string : opcional
                     "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
-                    "bairro": string : obrigatorio
+                    "bairro": string : opcional
                 },
                 "documentacao": list : opcional | [
                     {
@@ -105,8 +105,8 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                     "areaCultivada": number : obrigatorio | Ex.: 199.90 | Em hectares
                     "endereco": object : obrigatorio | {
                         "logradouro": string : obrigatorio
-                        "numero": string : obrigatorio
-                        "complemento": string : obrigatorio
+                        "numero": string : opcional
+                        "complemento": string : opcional
                         "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
                     },
                     "proprietarios": list : obrigatorio [
@@ -123,10 +123,10 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                             "obsQualificacaoEspecial": string : opcional
                             "endereco": object : obrigatorio | {
                                 "logradouro": string : obrigatorio
-                                "numero": "string : obrigatorio
-                                "complemento": string : obrigatorio
+                                "numero": "string : opcional
+                                "complemento": string : opcional
                                 "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
-                                "bairro": string : obrigatorio
+                                "bairro": string : opcional
                             }
                         }
                     ],
