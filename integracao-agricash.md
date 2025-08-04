@@ -118,7 +118,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                             "estadoCivil": string : obrigatorio | [Solteiro(a), Casado(a), União Estável, Viúvo(a), Divorciado(a)]
                             "nacionalidade": string : obrigatorio
                             "profissao": string : obrigatorio
-                            "tipo": string : obrigatorio
+                            "tipo": string : obrigatorio | [Proprietario, Arrendatario]
                             "qualificacaoEspecial": string : opcional
                             "obsQualificacaoEspecial": string : opcional
                             "endereco": object : obrigatorio | {
