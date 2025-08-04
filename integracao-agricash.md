@@ -241,6 +241,13 @@ O Agricash conta com a padronização de alguns campos para que os dados sigam u
     separacao_total
     comunhao_parcial
 
+#### 4.2.6 Tipos de titulares de propriedades rurais
+
+Obs.: Sem acento, capitalizado
+
+    Proprietario
+    Arrendatario    
+
 ### 4.3 Realizando a requisição
 
 A requisição deve ser do tipo POST, configurando o cabeçalho de Autenticação com o token gerado nos passos anteriores.
