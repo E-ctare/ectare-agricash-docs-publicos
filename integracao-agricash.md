@@ -93,6 +93,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                 },
                 "documentacao": list : opcional | [
                     {
+                        "nome": string : obrigatorio | arquivo.png
                         "tipo": string : obrigatorio
                         "url": string : obrigatorio se não for base64
                         "bytes": string : obrigatorio se não for url 
@@ -132,7 +133,8 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                     ],
                     "documentacao": list : opcional | [
                         {
-                            "tipo": string : obrigatorio
+                            "nome": string : obrigatorio | arquivo.png
+                            "tipo": string : obrigatorio | contrato_arrendamento
                             "url": string : obrigatorio se não for base64
                             "bytes": string : obrigatorio se não for url 
                         }
@@ -150,6 +152,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                             "folhaRegistro": string : opcional,
                             "documentacao": list : opcional | [
                                 {
+                                    "nome": string : obrigatorio | arquivo.png
                                     "tipo": string : obrigatorio
                                     "url": string : obrigatorio se não for base64
                                     "bytes": string : obrigatorio se não for url 
@@ -290,10 +293,12 @@ Exemplo de um payload da requisição:
                 },
                 "documentacao": [
                     {
+                        "nome": "cnh.jpg",
                         "tipo": "cnh",
-                        "url": "https://url-do-arquivo.com.br/arquivo.pdf"
+                        "url": "https://url-do-arquivo.com.br/arquivo.jpg"
                     },
                     {
+                        "nome": "comprovante_endereco.pdf",
                         "tipo": "comprovante_endereco",
                         "base64": "ZW5jb2RlZEZpbGVEYXRh"
                     }
@@ -333,10 +338,12 @@ Exemplo de um payload da requisição:
                     ],
                     "documentacao": [
                         {
+                            "nome": "itr.pdf",
                             "tipo": "itr",
                             "base64": "ZW5jb2RlZEZpbGVEYXRh"
                         },
                         {
+                            "nome": "car.pdf",
                             "tipo": "car",
                             "url": "https://url-do-arquivo.com.br/arquivo.pdf"
                         }
@@ -354,10 +361,12 @@ Exemplo de um payload da requisição:
                             "folhaRegistro": "688",
                             "documentacao": [
                                 {
+                                    "nome": "car.pdf",
                                     "tipo": "matricula_imovel",
                                     "base64": "ZW5jb2RlZEZpbGVEYXRh"
                                 },
                                 {
+                                    "nome": "contrato_arrendamento.pdf",
                                     "tipo": "contrato_arrendamento",
                                     "url": "https://url-do-arquivo.com.br/arquivo.pdf"
                                 }
