@@ -391,7 +391,7 @@ Exemplo de um payload da requisição:
 
 Em caso de sucesso, o status code **202** (Aceito) será informado. Isso pois o serviço tem duas frentes: parte assíncrona e parte síncrona.
 
-A parte síncrona é a resposta imediata, devolvida logo no momento da requisição. Essa resposta informa ao usuário do serviço se os dados dos produtores estão corretos. Para cada objeto incorreto será informado o motivo.  
+A parte síncrona é a resposta imediata, devolvida logo no momento da requisição. Essa resposta informa ao usuário do serviço se os dados fornecidos estão corretos preliminarmente. Para cada objeto incorreto será informado o motivo. 
 
 Um exemplo dessa resposta síncrona seria:
 ~~~json
@@ -436,4 +436,4 @@ Um exemplo dessa resposta síncrona seria:
 ~~~
 
 
-O processo assíncrono é quem realmente irá gravar os dados em nossos sistemas. Esse processo é invisível ao usuário, mas é possível estabelecer um webhook para que possamos informar a conclusão do processo de forma mais adequada. Caso não seja possível a utilização de webhooks, o processo seguirá normalmente, cadastrando apenas os dados que passaram na primeira validação da fase síncrona.
+O processo assíncrono é quem realmente irá gravar os dados em nossos sistemas. Esse processo é invisível ao usuário, mas é possível estabelecer um webhook para que possamos informar a conclusão do processo de forma mais adequada. Caso não seja possível a utilização de webhooks, o processo seguirá normalmente, cadastrando apenas os dados que cumpriram com a primeira etapa de validações e, depois, aqueles que cumprirem com a estrutura de dados do Agricash nessa segunda etapa.
