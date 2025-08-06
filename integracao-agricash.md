@@ -65,17 +65,19 @@ Para realizar a importação, o Agricash solicitará os dados mínimos para a cr
 
 ### 4.1 Explicação do payload
 
+Favor enviar os CNPJs, CPFs, RG e CEPs sem pontuação ou máscara.
+
 Os dados do corpo da requisição são descritos nos seguintes ***objetos estruturais***:  
 ```
 {
-    "cnpjEmissor": string : obrigatorio | com ou sem pontuação
-    "cnpjFundo": string : obrigatorio | com ou sem pontuação
+    "cnpjEmissor": string : obrigatorio | sem pontuação
+    "cnpjFundo": string : obrigatorio | sem pontuação
     "dados": list : obrigatorio | [
         {
             "portador": object : obrigatorio | {
                 "nome": string : obrigatorio 
-                "documento": string : obrigatorio | com ou sem pontuação
-                "telefone": string : obrigatorio | Ex.: 35999999999
+                "documento": string : obrigatorio | sem mascara
+                "telefone": string : obrigatorio | sem mascara Ex.: 35999999999
                 "email": string : obrigatorio
                 "profissao": string : obrigatorio
                 "estadoCivil": string : obrigatorio | [Solteiro(a), Casado(a), União Estável, Viúvo(a), Divorciado(a)] 
@@ -88,7 +90,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                     "logradouro": string : obrigatorio
                     "numero": string : opcional
                     "complemento": string : opcional
-                    "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
+                    "CEP": string : obrigatorio | sem mascara - usado para obter a cidade internamente
                     "bairro": string : opcional
                 },
                 "documentacao": list : opcional | [
@@ -108,7 +110,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                         "logradouro": string : obrigatorio
                         "numero": string : opcional
                         "complemento": string : opcional
-                        "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
+                        "CEP": string : obrigatorio | sem mascara - usado para obter a cidade internamente
                     },
                     "proprietarios": list : obrigatorio [
                         {
@@ -126,7 +128,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                                 "logradouro": string : obrigatorio
                                 "numero": "string : opcional
                                 "complemento": string : opcional
-                                "CEP": string : obrigatorio | com ou sem pontuação - usado para obter a cidade internamente
+                                "CEP": string : obrigatorio | sem mascara - usado para obter a cidade internamente
                                 "bairro": string : opcional
                             }
                         }
