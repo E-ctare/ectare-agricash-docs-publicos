@@ -395,26 +395,44 @@ A parte síncrona é a resposta imediata, devolvida logo no momento da requisiç
 
 Um exemplo dessa resposta síncrona seria:
 ~~~json
-[
+{
+  "cnpjEmissor": "xxxxxxxxxxxxxx",
+  "cnpjFundo": "xxxxxxxxxxxxxx",
+  "sucessos": 4,
+  "falhas": 1,
+  "relatorioImportacao": [
     {
-        "sucesso":false,
-        "nome":"CARLOS EDUARDO LEMOS",
-        "documento":"11122233344",
-        "motivo":["devedor indisponível para este âncora"]
+      "nome": "Ricardo Almeida",
+      "documento": "33333333333",
+      "sucesso": true,
+      "erro": null
     },
     {
-        "sucesso":false,
-        "nome":"CASA MEES MOVEIS E DECORACAO LTDA",
-        "documento":"11222333000144",
-        "motivo":["devedor indisponível para este âncora"]
+      "nome": "Beatriz Santos",
+      "documento": "44444444444",
+      "sucesso": true,
+      "erro": null
     },
     {
-        "sucesso":true,
-        "nome":"SAMUEL SILVA",
-        "documento":"12345678912",
-        "motivo":["valor do limite âncora é inválido"]
+      "nome": "Sebastião Oliveira",
+      "documento": "55555555555",
+      "sucesso": true,
+      "erro": null
+    },
+    {
+      "nome": "Mariana Costa",
+      "documento": "66666666666",
+      "sucesso": false,
+      "erro": "nenhum dos titulares da propriedade é do tipo proprietário"
+    },
+    {
+      "nome": "José Roberto",
+      "documento": "77777777777",
+      "sucesso": true,
+      "erro": null
     }
-]
+  ]
+}
 ~~~
 
 
