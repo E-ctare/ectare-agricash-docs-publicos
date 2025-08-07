@@ -146,6 +146,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                             "matricula": string : obrigatorio
                             "cartorio": string : obrigatorio
                             "areaTotal": number : obrigatorio | Ex.: 299.18 | Em hectares
+                            "areaCultivada": number : obrigatorio | Ex.: 30.99
                             "culturas": list : obrigatorio | [
                                 string : obrigatorio | [corn, soy, bovine, coffee, milk, watermelon, wheat, onion, caupiBean, sunflower]
                             ],
@@ -355,6 +356,7 @@ Exemplo de um payload da requisição:
                             "matricula": "RG019230-M1299",
                             "cartorio": "Paraíso",
                             "areaTotal": 80,
+                            "areaCultivada":20,
                             "culturas": [
                                 "corn"
                             ],
