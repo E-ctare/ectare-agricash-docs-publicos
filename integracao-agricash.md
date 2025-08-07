@@ -398,6 +398,4 @@ HTTP Error 400
   "mensagem":"o CNPJ informado não é válido"
 }
 ~~~
-
-
-O processo assíncrono é quem realmente irá gravar os dados em nossos sistemas. Esse processo é invisível ao usuário, mas é possível estabelecer um webhook para que possamos informar a conclusão do processo de forma mais adequada. Caso não seja possível a utilização de webhooks, o processo seguirá normalmente, cadastrando apenas os dados que cumpriram com a primeira etapa de validações e, depois, aqueles que cumprirem com a estrutura de dados do Agricash nessa segunda etapa.
+Após a etapa síncrona, o processo é tomado por uma rotina assíncrona, que irá cadastrar os portadores na base de dados do Agricash.
