@@ -72,8 +72,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
 {
     "cnpjEmissor": string : obrigatorio | sem pontuação
     "cnpjFundo": string : obrigatorio | sem pontuação
-    "dados": list : obrigatorio | [
-        {
+    "dados": object : obrigatorio | {
             "portador": object : obrigatorio | {
                 "nome": string : obrigatorio 
                 "documento": string : obrigatorio | sem mascara
@@ -171,7 +170,6 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                 "dataExpiracao": string : obrigatorio | Ex.: 2000-12-31
             }
         }
-    ]
 }
 ```
 
@@ -273,119 +271,117 @@ Exemplo de um payload da requisição:
 {
     "cnpjEmissor": "XXXXXXXXXXXXXX",
     "cnpjFundo": "XXXXXXXXXXXXXX",
-    "dados": [
-        {
-            "portador": {
-                "nome": "Nome do Portador ou Produtor",
-                "documento": "XXXXXXXXXXX",
-                "telefone": "00000000000",
-                "email": "email@email.com.br",
-                "profissao": "profissao do portador",
-                "estadoCivil": "Solteiro(a)",
-                "regimeBens": "comunhao_parcial",
-                "rg": "MMXXXXXXXX",
-                "nacionalidade": "brasileiro",
-                "dataNascimento": "2000-12-31",
-                "possuiCertificadoDigital":false,
+    "dados": {
+        "portador": {
+            "nome": "Nome do Portador ou Produtor",
+            "documento": "XXXXXXXXXXX",
+            "telefone": "00000000000",
+            "email": "email@email.com.br",
+            "profissao": "profissao do portador",
+            "estadoCivil": "Solteiro(a)",
+            "regimeBens": "comunhao_parcial",
+            "rg": "MMXXXXXXXX",
+            "nacionalidade": "brasileiro",
+            "dataNascimento": "2000-12-31",
+            "possuiCertificadoDigital": false,
+            "endereco": {
+                "logradouro": "Nome da rua",
+                "numero": "123",
+                "complemento": "B",
+                "CEP": "XXXXXXXX",
+                "bairro": "Nome do Bairro"
+            },
+            "documentacao": [
+                {
+                    "nome": "cnh.jpg",
+                    "tipo": "cnh",
+                    "url": "https://url-do-arquivo.com.br/arquivo.jpg"
+                },
+                {
+                    "nome": "comprovante_endereco.pdf",
+                    "tipo": "comprovante_endereco",
+                    "base64": "ZW5jb2RlZEZpbGVEYXRh"
+                }
+            ]
+        },
+        "propriedadesRurais": [
+            {
+                "nome": "Fazenda Santa Luzia",
+                "areaTotal": 100.10,
+                "areaCultivada": 89.2,
                 "endereco": {
-                    "logradouro": "Nome da rua",
+                    "logradouro": "Nome da estrada",
                     "numero": "123",
                     "complemento": "B",
-                    "CEP": "XXXXXXXX",
-                    "bairro": "Nome do Bairro"
+                    "CEP": "XXXXXXXX"
                 },
+                "proprietarios": [
+                    {
+                        "nome": "Nome do proprietario",
+                        "documento": "XXXXXXXXXXX",
+                        "rg": "MMXXXXXXXX",
+                        "inscricaoEstadual": "XXXXXXX",
+                        "estadoCivil": "Solteiro(a)",
+                        "nacionalidade": "brasileiro",
+                        "profissao": "Profissão do proprietario",
+                        "tipo": "Arrendatario ou Proprietario",
+                        "qualificacaoEspecial": "",
+                        "obsQualificacaoEspecial": "",
+                        "endereco": {
+                            "logradouro": "Nome da rua",
+                            "numero": "123",
+                            "complemento": "B",
+                            "CEP": "XXXXXXXX",
+                            "bairro": "Nome do Bairro"
+                        }
+                    }
+                ],
                 "documentacao": [
                     {
-                        "nome": "cnh.jpg",
-                        "tipo": "cnh",
-                        "url": "https://url-do-arquivo.com.br/arquivo.jpg"
+                        "nome": "itr.pdf",
+                        "tipo": "itr",
+                        "base64": "ZW5jb2RlZEZpbGVEYXRh"
                     },
                     {
-                        "nome": "comprovante_endereco.pdf",
-                        "tipo": "comprovante_endereco",
-                        "base64": "ZW5jb2RlZEZpbGVEYXRh"
+                        "nome": "car.pdf",
+                        "tipo": "car",
+                        "url": "https://url-do-arquivo.com.br/arquivo.pdf"
+                    }
+                ],
+                "matriculas": [
+                    {
+                        "matricula": "RG019230-M1299",
+                        "cartorio": "Paraíso",
+                        "areaTotal": 80,
+                        "areaCultivada": 20,
+                        "culturas": [
+                            "corn"
+                        ],
+                        "arrendado": false,
+                        "numeroLivro": "00000ABV",
+                        "folhaRegistro": "688",
+                        "documentacao": [
+                            {
+                                "nome": "car.pdf",
+                                "tipo": "matricula_imovel",
+                                "base64": "ZW5jb2RlZEZpbGVEYXRh"
+                            },
+                            {
+                                "nome": "contrato_arrendamento.pdf",
+                                "tipo": "contrato_arrendamento",
+                                "url": "https://url-do-arquivo.com.br/arquivo.pdf"
+                            }
+                        ]
                     }
                 ]
-            },
-            "propriedadesRurais": [
-                {
-                    "nome": "Fazenda Santa Luzia",
-                    "areaTotal": 100.10,
-                    "areaCultivada": 89.2,
-                    "endereco": {
-                        "logradouro": "Nome da estrada",
-                        "numero": "123",
-                        "complemento": "B",
-                        "CEP": "XXXXXXXX"
-                    },
-                    "proprietarios": [
-                        {
-                            "nome": "Nome do proprietario",
-                            "documento": "XXXXXXXXXXX",
-                            "rg": "MMXXXXXXXX",
-                            "inscricaoEstadual": "XXXXXXX",
-                            "estadoCivil": "Solteiro(a)",
-                            "nacionalidade": "brasileiro",
-                            "profissao": "Profissão do proprietario",
-                            "tipo": "Arrendatario ou Proprietario",
-                            "qualificacaoEspecial": "",
-                            "obsQualificacaoEspecial": "",
-                            "endereco": {
-                                "logradouro": "Nome da rua",
-                                "numero": "123",
-                                "complemento": "B",
-                                "CEP": "XXXXXXXX",
-                                "bairro": "Nome do Bairro"
-                            }
-                        }
-                    ],
-                    "documentacao": [
-                        {
-                            "nome": "itr.pdf",
-                            "tipo": "itr",
-                            "base64": "ZW5jb2RlZEZpbGVEYXRh"
-                        },
-                        {
-                            "nome": "car.pdf",
-                            "tipo": "car",
-                            "url": "https://url-do-arquivo.com.br/arquivo.pdf"
-                        }
-                    ],
-                    "matriculas": [
-                        {
-                            "matricula": "RG019230-M1299",
-                            "cartorio": "Paraíso",
-                            "areaTotal": 80,
-                            "areaCultivada":20,
-                            "culturas": [
-                                "corn"
-                            ],
-                            "arrendado": false,
-                            "numeroLivro": "00000ABV",
-                            "folhaRegistro": "688",
-                            "documentacao": [
-                                {
-                                    "nome": "car.pdf",
-                                    "tipo": "matricula_imovel",
-                                    "base64": "ZW5jb2RlZEZpbGVEYXRh"
-                                },
-                                {
-                                    "nome": "contrato_arrendamento.pdf",
-                                    "tipo": "contrato_arrendamento",
-                                    "url": "https://url-do-arquivo.com.br/arquivo.pdf"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ],
-            "limiteFinanciamento": {
-                "valor":123.45,
-                "taxa":0.5,
-                "dataExpiracao":"2000-12-31"
             }
+        ],
+        "limiteFinanciamento": {
+            "valor": 123.45,
+            "taxa": 0.5,
+            "dataExpiracao": "2000-12-31"
         }
-    ]
+    }
 }
 ~~~
 
