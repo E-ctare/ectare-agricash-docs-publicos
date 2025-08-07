@@ -4,9 +4,9 @@
 ## 1 - Introdução
 
 Para que o acesso às APIs sejam feitos de forma segura será necessário que o usuário autentique suas requisição com um token. Será fornecido a informação necessária para que o token seja gerado, bem como o endpoint de API que permita essa autenticação.
-O serviço de importação se divide em várias etapas, possibilitando que em uma única requisição seja aceita uma lista, associada à um CNPJ do emissor e um CNPJ do fundo o qual serão criados os limites. Essa lista possui os dados do produtor, também referido como portador, os dados das propriedades rurais e matrículas e também o limite de fundo que será lançado para este produtor.
+O serviço de importação se divide em duas etapas. Envia-se um payload JSON contendo os dados do cadastro junto com a o CNPJ do emissor e o CNPJ do fundo do qual será gerado o limite. Este objeto contém os dados do portador, também referenciado como produtor ou devedor, bem como os dados de sua propriedade rural, proprietários ou arrendatários desta propriedade, matrículas e os valores para o limite.
 As informações de propriedades rurais e matrículas são coletadas de forma que seja composto um objeto onde cada propriedade rural possui uma lista de matrículas. Cada propriedade deve ter, então, no mínimo uma matrícula. Os proprietários são configurados para a propriedade rural e a titularidade é especificada através dos tipos, podendo ser proprietário ou arrendatário.
-Os dados importados serão tidos como fonte da verdade, substituindo os dados que estão no Agricash no momento.
+Os dados importados ***serão tomados como fonte da verdade***, ***substituindo*** os dados que estão no Agricash.
 
 ## 2 - Ambientes
 
@@ -61,7 +61,7 @@ Caso a requisição falhe, erros específicos serão retornados contendo a mensa
 
 ## 4 - API de importação
 
-Para realizar a importação, o Agricash solicitará os dados mínimos para a criação de limite de fundos para cada produtor (portador). Nisso, um fundo com limite de financiamento deve existir entre o emissor e a instituição financiadora. Tendo esse pré-requisito sido alcançado, o usuário da importação precisará ter em mãos o CNPJ do emissor e o CNPJ do fundo utilizado no momento da criação de tal limite.
+Para realizar a importação, o Agricash solicitará os dados mínimos para a criação de limite de fundos para o portador. Nisso, um fundo com limite de financiamento deve existir entre o emissor e a instituição financiadora. Tendo esse pré-requisito sido alcançado, o usuário da importação precisará ter em mãos o CNPJ do emissor e o CNPJ do fundo utilizado no momento da criação de tal limite.
 
 ### 4.1 Explicação do payload
 
@@ -387,49 +387,15 @@ Exemplo de um payload da requisição:
 
 ### 4.4 Resposta da requisição
 
-Em caso de sucesso, o status code **202** (Aceito) será informado. Isso pois o serviço tem duas frentes: parte assíncrona e parte síncrona.
+Em caso de sucesso, o status code **202** (Aceito) será informado junto com uma mensagem de aceitação dos dados. Isso pois o serviço tem duas frentes: parte assíncrona e parte síncrona.
 
-A parte síncrona é a resposta imediata, devolvida logo no momento da requisição. Essa resposta informa ao usuário do serviço se os dados fornecidos estão corretos preliminarmente. Para cada objeto incorreto será informado o motivo. 
+A parte síncrona é a resposta imediata, devolvida logo no momento da requisição. Essa resposta informa ao usuário do serviço se os dados fornecidos estão corretos ***preliminarmente***. O payload de informações foi criado de forma que seja colhido o mínimo de informações possível para a admissão de um limite de financiamento em nossa estrutura. Nisso, qualquer um dos campos obrigatórios que falhem durante esta fase irá retornar um erro na requisição
 
-Um exemplo dessa resposta síncrona seria:
+Um exemplo dessa resposta de erro:
+HTTP Error 400
 ~~~json
 {
-  "cnpjEmissor": "xxxxxxxxxxxxxx",
-  "cnpjFundo": "xxxxxxxxxxxxxx",
-  "sucessos": 4,
-  "falhas": 1,
-  "relatorioImportacao": [
-    {
-      "nome": "Ricardo Almeida",
-      "documento": "33333333333",
-      "sucesso": true,
-      "erro": null
-    },
-    {
-      "nome": "Beatriz Santos",
-      "documento": "44444444444",
-      "sucesso": true,
-      "erro": null
-    },
-    {
-      "nome": "Sebastião Oliveira",
-      "documento": "55555555555",
-      "sucesso": true,
-      "erro": null
-    },
-    {
-      "nome": "Mariana Costa",
-      "documento": "66666666666",
-      "sucesso": false,
-      "erro": "nenhum dos titulares da propriedade é do tipo proprietário"
-    },
-    {
-      "nome": "José Roberto",
-      "documento": "77777777777",
-      "sucesso": true,
-      "erro": null
-    }
-  ]
+  "mensagem":"o CNPJ informado não é válido"
 }
 ~~~
 
