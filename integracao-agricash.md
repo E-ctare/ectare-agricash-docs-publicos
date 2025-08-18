@@ -86,7 +86,7 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
                 "dataNascimento": string : obrigatorio | Ex.: 2000-12-31
                 "possuiCertificadoDigital": boolean : obrigatorio | Determina o tipo da assinatura
                 "garantiaPreferencial": obrigatorio | penhor ou nenhuma
-                "taxaCprPreferencial": obrigatorio | prefixada ou posfixada
+                "tipoTaxaCprPreferencial": obrigatorio | prefixada ou posfixada
                 "endereco": object : obrigatorio | {
                     "logradouro": string : obrigatorio
                     "numero": string : opcional
@@ -287,7 +287,7 @@ Exemplo de um payload da requisição:
             "dataNascimento": "2000-12-31",
             "possuiCertificadoDigital": false,
             "garantiaPreferencial": "penhor",
-            "taxaCprPreferencial": "posfixada",
+            "tipoTaxaCprPreferencial": "posfixada",
             "endereco": {
                 "logradouro": "Nome da rua",
                 "numero": "123",
