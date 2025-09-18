@@ -128,16 +128,18 @@ curl --request POST \
 
 201 - Created
 
-```
 
 Erros 
-
+~~~
     404 - Not found
     Caso os dados enviados não encontrem referencias na nossa base
     Caso o enpoint não seja encontrado
-  
+~~~
+~~~
     400 - Bad request
     Caso os dados enviados sejam inválidos ou incompletos
-  
+~~~
+~~~
     500 - Internal server error
     Caso a integração falhe por indisponibilidade dos nossos serviços
+~~~
