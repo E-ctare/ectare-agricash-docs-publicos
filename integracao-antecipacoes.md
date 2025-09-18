@@ -36,14 +36,23 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 ### 1.2 - Compreensão dos dados
 
 *cnpjEmissor* é o cnpj da cooperativa
+
 *cpfCnpjPortador* é o documento do produtor ou fornecedor da nota
+
 *tipo* é o tipo da origem do registro. Pode ser uma coleta de produto ou uma nota fiscal de um fornecedor
+
 *dataColeta* é a data, no formato brasileiro (dd/mm/yyyy), em que foi feita a coleta do produto
+
 *descricao* é o tipo de produto ou qualquer outra informação que ajude a identificar o conteúdo da coleta
+
 *quantidade* é um valor que, aliado à medida, forma a informação de quantos litros, kilos, pacotes foram coletados
+
 *medida* é a informação sobre a medida do que foi coletado. Para leite, usar litros ou L, por exemplo
+
 *valorUnidade* é o valor em reais que cada unidade, daquela medida, vale
+
 *adiantamento* é o valor que configura o sistema de adiantamentos (mínimo)
+
 *notaFiscal* é um objeto para quando a origem da integração for do tipo nota. Este objeto possui: *url* e *base64*. O arquivo será baixado caso a url seja válida. Caso contrário, o base64 será utilizado para obter o arquivo da nota fiscal. Caso os dois estejam preenchidos, a prioridade é dada ao base64.
 
 
