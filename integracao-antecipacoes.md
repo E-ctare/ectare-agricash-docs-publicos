@@ -49,7 +49,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 
 ## 1.3 - Exemplo de payload - Contexto de coleta
 
-```
+```json
 {
     "cnpjEmissor": "68531428000102",
     "cpfCnpjPortador":"84913750070",
@@ -69,7 +69,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 
 a) Passando a nota como base64
 
-```
+```json
 {
     "cnpjEmissor": "06171175000148",
     "cpfCnpjPortador":"51340919000165",
