@@ -88,6 +88,8 @@ b) Passando a nota como url
 {
     "cnpjEmissor": "06171175000148",
     "cpfCnpjPortador":"51340919000165",
+    "nomePortador": "Cristiano Silva",
+    "telefonePortador": "35912345678",
     "tipo":"nota",
     "notaFiscal":{
         "url":"https://imagem-da-nota-fiscal/arquivo.xml",
