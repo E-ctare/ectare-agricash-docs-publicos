@@ -126,47 +126,8 @@ curl --request POST \
 
 ### 2.2 - Response
 
-201 - Created  
-Body:
-```json
-{
-    "cnpjEmissor": "68531428000102",
-    "cpfCnpjPortador":"84913750070",
-    "tipo":"coleta",
-    "dataColeta":"19/05/2025",
-    "descricao": "leite",
-    "quantidade": 120,
-    "medida":"litro",
-    "valorUnidade":0.86,
-    "adiantamento":16000.50
-}
-```
-ou
+201 - Created
 
-201 - Created<br>
-Body:
-```json
-{
-    "cnpjEmissor": "68531428000102",
-    "cpfCnpjPortador":"84913750070",
-    "tipo":"nota",
-    "notaFiscal":{
-        "data":"2025-04-30",
-        "valor":1200.30,
-        "duplicatas":[
-            {
-                "num":"001",
-                "venc":"2025-12-01"
-                "valor":600.15
-            },
-            {
-                "num":"002",
-                "venc":"2026-01-01"
-                "valor":600.15
-            }
-        ]
-    }
-}
 ```
 
 Erros 
