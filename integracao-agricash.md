@@ -1,69 +1,15 @@
 # Manual da Integração Agricash
 ## Importação de Portadores
 
-## 1 - Introdução
+## Autenticação
 
-Para que o acesso às APIs sejam feitos de forma segura será necessário que o usuário autentique suas requisição com um token. Será fornecido a informação necessária para que o token seja gerado, bem como o endpoint de API que permita essa autenticação.
-O serviço de importação se divide em duas etapas. Envia-se um payload JSON contendo os dados do cadastro junto com a o CNPJ do emissor e o CNPJ do fundo do qual será gerado o limite. Este objeto contém os dados do portador, também referenciado como produtor ou devedor, bem como os dados de sua propriedade rural, proprietários ou arrendatários desta propriedade, matrículas e os valores para o limite.
-As informações de propriedades rurais e matrículas são coletadas de forma que seja composto um objeto onde cada propriedade rural possui uma lista de matrículas. Cada propriedade deve ter, então, no mínimo uma matrícula. Os proprietários são configurados para a propriedade rural e a titularidade é especificada através dos tipos, podendo ser proprietário ou arrendatário.
-Os dados importados ***serão tomados como fonte da verdade***, ***substituindo*** os dados que estão no Agricash.
+Para autenticar-se com as APIs da e-ctare, favor seguir os passos descritos [aqui](./autenticacao-agricash.md)
 
-## 2 - Ambientes
-
-O Agricash conta com dois ambientes principais. São eles:
-
-produção:  
-~~~
-https://api.agricash.ectare.com.br/v2  
-~~~
- 
-desenvolvimento:  
-~~~
-https://api.dev.agricash.ectare.com.br/v2
-~~~
-
-## 3 - Autenticação
-
-Para obter um token, o usuário deve estar portando seu **clientId** e seu **clientSecret**. Esses dados são informados no momento da contratação dos serviços. Será também necessário informar a API a qual deseja-se conectar. 
-
-### 3.1 - API de Autenticação
-
-Realizar requisição POST de acordo com o CURL disponibilizado abaixo:
-
-~~~curl
-curl --request POST \
-  --url {{AMBIENTE}}/ectare-gerenciador-autenticacao/oauth/token \
-  --header 'content-type: application/json' \
-  --data '{
-  "client_id": "{{SEU_CLIENT_ID}}",
-  "client_secret": "{{SEU_CLIENT_SECRET}}",
-  "audience": "{{SUA_API}}"
-}'
-~~~
-
-O retorno desta requisição será, em caso de sucesso, o seguinte objeto:
-~~~json
-{
-    "access_token":"eyJhbGciOiJIUzI1N...",
-    "scope":"user:read",
-    "issued_at":1753971859,
-    "expires_in":3600,
-    "expires_at":1753971859
-}
-~~~
-
-Caso a requisição falhe, erros específicos serão retornados contendo a mensagem de erro
-~~~json
-{
-    "mensagem":"mensagem do erro"
-}
-~~~
-
-## 4 - API de importação
+## 1 - API de importação
 
 Para realizar a importação, o Agricash solicitará os dados mínimos para a criação de limite de fundos para o portador. Nisso, um fundo com limite de financiamento deve existir entre o emissor e a instituição financiadora. Tendo esse pré-requisito sido alcançado, o usuário da importação precisará ter em mãos o CNPJ do emissor e o CNPJ do fundo utilizado no momento da criação de tal limite.
 
-### 4.1 Explicação do payload
+### 1.1 Explicação do payload
 
 Favor enviar os CNPJs, CPFs, RG e CEPs sem pontuação ou máscara.
 
@@ -175,11 +121,11 @@ Os dados do corpo da requisição são descritos nos seguintes ***objetos estrut
 }
 ```
 
-### 4.2 Dados constantes
+### 1.2 Dados constantes
 
 O Agricash conta com a padronização de alguns campos para que os dados sigam uma estrutura. Solicitamos que os dados abaixo descritos sejam informados de acordo com as opções destinadas a ele:
 
-#### 4.2.1 Tipos de documentos do produtor (portador):
+#### 1.2.1 Tipos de documentos do produtor (portador):
 
     certidao_casamento  
     certidao_casamento_terceiro
@@ -216,7 +162,7 @@ O Agricash conta com a padronização de alguns campos para que os dados sigam u
     certificado_comercializacao_agrotoxico
     cnd
 
-#### 4.2.2 Tipos de documentos para propriedades rurais
+#### 1.2.2 Tipos de documentos para propriedades rurais
 
     analise_esg
     car
@@ -226,13 +172,13 @@ O Agricash conta com a padronização de alguns campos para que os dados sigam u
     quadro_safra_assinado
     certificado_florestal
 
-#### 4.2.3 Tipos de documentos para matrículas das propriedades
+#### 1.2.3 Tipos de documentos para matrículas das propriedades
 
     carta_anuencia
     contrato_arrendamento
     matricula_imovel
 
-#### 4.2.4 Tipos de estados civis
+#### 1.2.4 Tipos de estados civis
 
     Solteiro(a)
     Casado(a)
@@ -241,20 +187,20 @@ O Agricash conta com a padronização de alguns campos para que os dados sigam u
     Separado(a)
     Viúvo(a)
 
-#### 4.2.5 Tipos de regime de bens
+#### 1.2.5 Tipos de regime de bens
 
     comunhao_universal
     separacao_total
     comunhao_parcial
 
-#### 4.2.6 Tipos de titulares de propriedades rurais
+#### 1.2.6 Tipos de titulares de propriedades rurais
 
 Obs.: Sem acento, capitalizado
 
     Proprietario
     Arrendatario    
 
-### 4.3 Realizando a requisição
+### 1.3 Realizando a requisição
 
 A requisição deve ser do tipo POST, configurando o cabeçalho de Autenticação com o token gerado nos passos anteriores.
 
@@ -389,7 +335,7 @@ Exemplo de um payload da requisição:
 }
 ~~~
 
-### 4.4 Resposta da requisição
+### 1.4 Resposta da requisição
 
 Em caso de sucesso, o status code **202** (Aceito) será informado junto com uma mensagem de aceitação dos dados. Isso pois o serviço tem duas frentes: parte assíncrona e parte síncrona.
 
