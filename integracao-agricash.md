@@ -7,6 +7,10 @@ Para autenticar-se com as APIs da e-ctare, favor seguir os passos descritos [aqu
 
 ## 1 - API de importação
 
+O serviço de importação se divide em duas etapas. Envia-se um payload JSON contendo os dados do cadastro junto com a o CNPJ do emissor e o CNPJ do fundo do qual será gerado o limite. Este objeto contém os dados do portador, também referenciado como produtor ou devedor, bem como os dados de sua propriedade rural, proprietários ou arrendatários desta propriedade, matrículas e os valores para o limite.
+As informações de propriedades rurais e matrículas são coletadas de forma que seja composto um objeto onde cada propriedade rural possui uma lista de matrículas. Cada propriedade deve ter, então, no mínimo uma matrícula. Os proprietários são configurados para a propriedade rural e a titularidade é especificada através dos tipos, podendo ser proprietário ou arrendatário.
+Os dados importados ***serão tomados como fonte da verdade***, ***substituindo*** os dados que estão no Agricash.
+
 Para realizar a importação, o Agricash solicitará os dados mínimos para a criação de limite de fundos para o portador. Nisso, um fundo com limite de financiamento deve existir entre o emissor e a instituição financiadora. Tendo esse pré-requisito sido alcançado, o usuário da importação precisará ter em mãos o CNPJ do emissor e o CNPJ do fundo utilizado no momento da criação de tal limite.
 
 ### 1.1 Explicação do payload
