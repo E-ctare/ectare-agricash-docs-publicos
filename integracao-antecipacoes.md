@@ -17,6 +17,8 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 {
     "cnpjEmissor": string : obrigatorio | sem pontuação
     "cpfCnpjPortador": string : obrigatorio | sem pontuação
+    "nomePortador" : obrigatorio se [coleta]
+    "telefonePortador" : obrigatorio se [coleta] | sem pontuacao ou mascara | ex.: 16999999999
     "tipo": string : obrigatorio | [coleta] ou [nota]
     "dataColeta": string : obrigatorio se [coleta] | padrão dd/mm/yyyy
     "descricao": string : obrigatorio se [coleta] | leite; algodão; arroz etc.
@@ -51,6 +53,8 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 {
     "cnpjEmissor": "68531428000102",
     "cpfCnpjPortador":"84913750070",
+    "nomePortador":"Cristiano Silva",
+    "telefonePortador":"35912345678",
     "tipo":"coleta",
     "dataColeta":"19/05/2025",
     "descricao": "leite",
@@ -69,6 +73,8 @@ a) Passando a nota como base64
 {
     "cnpjEmissor": "06171175000148",
     "cpfCnpjPortador":"51340919000165",
+    "nomePortador": "Cristiano Silva",
+    "telefonePortador": "35912345678",
     "tipo":"nota",
     "notaFiscal":{
         "base64":"iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACA",
