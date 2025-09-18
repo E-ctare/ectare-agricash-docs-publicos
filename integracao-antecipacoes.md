@@ -58,7 +58,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
     "tipo":"coleta",
     "dataColeta":"19/05/2025",
     "descricao": "leite",
-    "quantidade": "120",
+    "quantidade": 120,
     "medida":"litro",
     "valorUnidade":0.86,
     "adiantamento":16000.50
@@ -126,7 +126,7 @@ Body:
     "tipo":"coleta",
     "dataColeta":"19/05/2025",
     "descricao": "leite",
-    "quantidade": "120",
+    "quantidade": 120,
     "medida":"litro",
     "valorUnidade":0.86,
     "adiantamento":16000.50
