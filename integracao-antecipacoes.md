@@ -117,7 +117,7 @@ curl --request POST \
 
 ### 2.2 - Response
 
-201 - Created
+201 - Created  
 Body:
 ```json
 {
