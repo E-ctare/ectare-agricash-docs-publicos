@@ -134,7 +134,7 @@ Body:
 ```
 ou
 
-201 - Created
+201 - Created<br>
 Body:
 ```json
 {
