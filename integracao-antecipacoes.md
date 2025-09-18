@@ -84,7 +84,7 @@ a) Passando a nota como base64
 
 b) Passando a nota como url
 
-```
+```json
 {
     "cnpjEmissor": "06171175000148",
     "cpfCnpjPortador":"51340919000165",
@@ -119,7 +119,7 @@ curl --request POST \
 
 201 - Created
 Body:
-```
+```json
 {
     "cnpjEmissor": "68531428000102",
     "cpfCnpjPortador":"84913750070",
@@ -136,7 +136,7 @@ ou
 
 201 - Created
 Body:
-```
+```json
 {
     "cnpjEmissor": "68531428000102",
     "cpfCnpjPortador":"84913750070",
@@ -165,9 +165,9 @@ Erros
     404 - Not found
     Caso os dados enviados não encontrem referencias na nossa base
     Caso o enpoint não seja encontrado
-
+  
     400 - Bad request
     Caso os dados enviados sejam inválidos ou incompletos
-
+  
     500 - Internal server error
     Caso a integração falhe por indisponibilidade dos nossos serviços
