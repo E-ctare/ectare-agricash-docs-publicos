@@ -17,8 +17,8 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 {
     "cnpjEmissor": string : obrigatorio | sem pontuação
     "cpfCnpjPortador": string : obrigatorio | sem pontuação
-    "nomePortador" : obrigatorio se [coleta]
-    "telefonePortador" : obrigatorio se [coleta] | sem pontuacao ou mascara | ex.: 16999999999
+    "nomePortador" : obrigatorio
+    "telefonePortador" : obrigatorio | sem pontuacao ou mascara | ex.: 16999999999
     "tipo": string : obrigatorio | [coleta] ou [nota]
     "dataColeta": string : obrigatorio se [coleta] | padrão dd/mm/yyyy
     "descricao": string : obrigatorio se [coleta] | leite; algodão; arroz etc.
