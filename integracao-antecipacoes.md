@@ -20,7 +20,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
     "nomePortador" : obrigatorio
     "telefonePortador" : obrigatorio | sem pontuacao ou mascara | ex.: 16999999999
     "tipo": string : obrigatorio | [coleta] ou [nota]
-    "dataColeta": string : obrigatorio se [coleta] | padrão dd/mm/yyyy
+    "dataColeta": string : obrigatorio se [coleta] | padrão dd/mm/yyyy ou yyyy-mm-dd
     "descricao": string : obrigatorio se [coleta] | leite; algodão; arroz etc.
     "quantidade": number : obrigatorio se [coleta] | ex.: 200.10; 400; 2.50 etc.
     "medida": string : obrigatorio se [coleta] | litros; kg; sacas; pacotes etc.
@@ -41,7 +41,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 
 *tipo* é o tipo da origem do registro. Pode ser uma coleta de produto ou uma nota fiscal de um fornecedor
 
-*dataColeta* é a data, no formato brasileiro (dd/mm/yyyy), em que foi feita a coleta do produto
+*dataColeta* é a data, no formato brasileiro (dd/mm/yyyy) ou internacional (YYYY-MM-DD), em que foi feita a coleta do produto
 
 *descricao* é o tipo de produto ou qualquer outra informação que ajude a identificar o conteúdo da coleta
 
