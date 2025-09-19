@@ -101,7 +101,7 @@ b) Passando a nota como url
     "telefonePortador": "35912345678",
     "tipo":"nota",
     "notaFiscal":{
-        "url":"https://imagem-da-nota-fiscal/arquivo.xml",
+        "url":"https://nota-fiscal/arquivo.xml",
     }
 }
 ```
