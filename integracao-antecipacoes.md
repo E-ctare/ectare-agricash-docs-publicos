@@ -29,6 +29,19 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
     "notaFiscal": objeto | obrigatorio se [nota] | {
         "base64": string | obrigatorio se url vazio | o arquivo em codificação base64
         "url": string : obrigatorio se base64 vazio | url do arquivo para ser baixado
+        "dados": objeto | opcional se não url e nem base64 | é priorizado {
+            "numeroNota": string : obrigatorio
+            "chaveNota": string : obrigatorio
+            "dataEmissao": string : obrigatorio | padrão dd/mm/yyyy ou yyyy-mm-dd
+            "valorTotal": number : obrigatorio | 200.10; 10, etc.
+            "vencimentos": lista : obrigatorio > 1 [
+                {
+                    "numeroDuplicata": integer : obrigatorio
+                    "valor": number : obrigatorio | 200.10; 10, etc.
+                    "dataVencimento": string : obrigatorio | padrão dd/mm/yyyy ou yyyy-mm-dd
+                }
+            ]
+        }
     }
 }
 ```
@@ -53,8 +66,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
 
 *adiantamento* é o valor que configura o sistema de adiantamentos (mínimo)
 
-*notaFiscal* é um objeto para quando a origem da integração for do tipo nota. Este objeto possui: *url* e *base64*. O arquivo será baixado caso a url seja válida. Caso contrário, o base64 será utilizado para obter o arquivo da nota fiscal. Caso os dois estejam preenchidos, a prioridade é dada ao base64.
-
+*notaFiscal* é um objeto para quando a origem da integração for do tipo nota. Este objeto possui: *url* e *base64* *dados*. O arquivo será baixado caso a url seja válida. Caso contrário, o base64 será utilizado para obter o arquivo da nota fiscal. Dados é um objeto utilizado quando não á fonte do arquivo. *Se preenchido, dados é priorizado*. 
 
 ## 1.3 - Exemplo de payload - Contexto de coleta
 
@@ -102,6 +114,36 @@ b) Passando a nota como url
     "tipo":"nota",
     "notaFiscal":{
         "url":"https://nota-fiscal/arquivo.xml",
+    }
+}
+```
+c) Passando a nota como dados
+```json
+{
+    "cnpjEmissor": "06171175000148",
+    "cpfCnpjPortador":"51340919000165",
+    "nomePortador": "Cristiano Silva",
+    "telefonePortador": "35912345678",
+    "tipo":"nota",
+    "notaFiscal":{
+        "dados":{
+            "numeroNota":"9743",
+            "chaveNota":"31250886454741000168550030000097431125708481",
+            "dataEmissao":"12/12/2022",
+            "valorTotal":10,
+            "vencimentos":[
+                {
+                    "numeroDuplicata":1,
+                    "valor":5,
+                    "dataVencimento":"12/12/2022"
+                },
+                {
+                    "numeroDuplicata":2,
+                    "valor":5,
+                    "dataVencimento":"13/12/2022"
+                }
+            ]
+        }
     }
 }
 ```
