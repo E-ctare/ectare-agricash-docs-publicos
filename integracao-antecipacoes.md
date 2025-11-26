@@ -19,7 +19,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
     "cpfCnpjPortador": string : obrigatorio | sem pontuação
     "nomePortador" : obrigatorio
     "telefonePortador" : obrigatorio | sem pontuacao ou mascara | ex.: 16999999999
-    "codigoExterno": string | ex.: "A12BCD99"
+    "codigoExterno": string | apenas números | ex.: "123"
     "tipo": string : obrigatorio | [coleta] ou [nota]
     "dataColeta": string : obrigatorio se [coleta] | padrão dd/mm/yyyy ou yyyy-mm-dd
     "descricao": string : obrigatorio se [coleta] | leite; algodão; arroz etc.
@@ -79,7 +79,7 @@ O sistema está preparado para lidar com duas situações: coleta de produto ou 
     "cpfCnpjPortador":"84913750070",
     "nomePortador":"Cristiano Silva",
     "telefonePortador":"35912345678",
-    "codigoExterno":"A1B2C3D4XX",
+    "codigoExterno":"1234",
     "tipo":"coleta",
     "dataColeta":"19/05/2025",
     "descricao": "leite",
@@ -100,7 +100,7 @@ a) Passando a nota como base64
     "cpfCnpjPortador":"51340919000165",
     "nomePortador": "Cristiano Silva",
     "telefonePortador": "35912345678",
-    "codigoExterno":"A1B2C3D4XX",
+    "codigoExterno":"1234",
     "tipo":"nota",
     "notaFiscal":{
         "base64":"iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACA",
@@ -116,7 +116,7 @@ b) Passando a nota como url
     "cpfCnpjPortador":"51340919000165",
     "nomePortador": "Cristiano Silva",
     "telefonePortador": "35912345678",
-    "codigoExterno":"A1B2C3D4XX",
+    "codigoExterno":"1234",
     "tipo":"nota",
     "notaFiscal":{
         "url":"https://nota-fiscal/arquivo.xml",
@@ -130,7 +130,7 @@ c) Passando a nota como dados
     "cpfCnpjPortador":"51340919000165",
     "nomePortador": "Cristiano Silva",
     "telefonePortador": "35912345678",
-    "codigoExterno":"A1B2C3D4XX",
+    "codigoExterno":"1234",
     "tipo":"nota",
     "notaFiscal":{
         "dados":{
